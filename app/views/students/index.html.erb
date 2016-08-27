@@ -1,17 +1,11 @@
 <div class="row" ng-app="searchApp" ng-controller="SearchController as vm">
   <div class="col-md-8 col-md-offset-2">
     <p id="notice"><%= notice %></p>
-
     <div class="search_input">
       <h1>Students</h1>
       <div class="row">
         <div class="form-group col-md-4">
-          <%= text_field_tag :search_input, nil, placeholder: "Search..", class: "form-control" %>
-        </div>
-        <div class="form-group col-md-2 btn-search">
-          <button type="button" class="btn btn-default" ng-click="vm.search()">
-            Search
-          </button>
+          <input type="text" placeholder="Search" ng-model="SearchText" class="form-control" />
         </div>
       </div>
     </div>
@@ -20,31 +14,24 @@
         <thead>
           <tr>
             <th>ID</th>
+            <th>Identity Card</th>
             <th>Name</th>
             <th>Date of birth</th>
             <th>Place</th>
             <th>Class</th>
-            <th>Action</th>
           </tr>
         </thead>
-
         <tbody>
-          <% @students.each do |student| %>
-            <tr>
-              <td><%= student.id_number %> </td>
-              <td><%= student.name %> </td>
-              <td><%= student.date_of_birth.strftime("%F") %> </td>
-              <td><%= student.place_birth %> </td>
-              <td><%= student.place_birth %> </td>
-              <td>
-                <%= link_to "Show", student %> |
-                <%= link_to "Edit", edit_student_path(student) %> |
-                <%= link_to "Destroy", student, method: :delete, data: { confirm: "Are you sure?" } %>
-              </td>
-            </tr>
-          <% end %>
+          <tr ng-repeat="student in vm.students | filter:SearchText">
+            <td>{{student.id}}</td>
+            <td>{{student.id_number}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.date_of_birth | date: "yyyy-MM-dd"}}</td>
+            <td>{{student.place_birth}}</td>
+            <td>{{student.in_class}}</td>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+

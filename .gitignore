@@ -14,7 +14,7 @@
 !/tmp/.keep
 *.bowerrc
 bower.json
-/vendor/assets/components
+/vendor/assets/
 /bower_components
 
 # Ignore Byebug command history file.

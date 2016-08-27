@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap/dist/js/bootstrap.min
 //= require angular/angular.min
+//= require angular-route/angular-route
+//= require angular-resource/angular-resource
 //= require_tree ./angular
